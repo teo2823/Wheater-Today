@@ -58,7 +58,7 @@ let showWeather = ()=>{
                     break;
                 
                 default:
-                    image.src = '';
+                    image.src = 'assets/default.png';
             }
             
             temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
