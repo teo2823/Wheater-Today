@@ -1,10 +1,12 @@
 const container = document.querySelector('.container_search');
 const search = document.querySelector('.search-box button');
+const inputSearch = document.querySelector('.input-search')
 const weatherDiv = document.querySelector('.weather-div');
 const weatherDetails = document.querySelector('.weather-details');
 const notFound = document.querySelector('.not-found');
 
-search.addEventListener('click', ()=>{
+// funcion para acceder a la api y mostrar sus datos
+let showWeather = ()=>{
     const APIKey = '183867a2eebba07e9c5f11cf207dea04';
     const city = document.querySelector('.search-box input').value;
 
@@ -21,7 +23,9 @@ search.addEventListener('click', ()=>{
                 weatherDetails.style.display = 'none';
                 notFound.style.display = 'block';
                 notFound.classList.add('fadeIn');
+                weatherDetails.classList.remove('fadeIn');
                 return;
+                
             }
             notFound.style.display = 'none';
             notFound.classList.remove('fadeIn');
@@ -66,7 +70,28 @@ search.addEventListener('click', ()=>{
             weatherDetails.style.display = '';
             weatherDiv.classList.add('fadeIn');
             weatherDetails.classList.add('fadeIn');
-            container.style.height = '600px';
+            function resizeContainer(screen) {
+                if (screen.matches) { 
+                  container.style.height = "600px";
+                } else {
+                    container.style.height = "450px";
+                }
+            }
+
+            const screen = window.matchMedia("(min-width: 700px)")
+            resizeContainer(screen); 
+            screen.addEventListener(resizeContainer); 
+            
         });
+}
+
+search.addEventListener('click', showWeather);
+
+
+inputSearch.addEventListener('keydown', (e)=>{
+    if(e.keyCode === 13){
+        showWeather()
+    }
 });
+
 
