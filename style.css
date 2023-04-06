@@ -18,7 +18,7 @@ p{
         0deg,
         rgba(0, 0, 0, 0.829),
         rgba(0, 0, 0, 0.658)
-    ), url(/assets/bk\ ap.jpg);
+    ), url(./assets/bk-ap.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
